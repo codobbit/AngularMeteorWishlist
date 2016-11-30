@@ -1,0 +1,4 @@
+<div *ngFor="let user of users | async">
+    <a [routerLink]="['/users', user._id]" >View wishlist</a>
+        <div>{{user._id}}</div>
+</div>

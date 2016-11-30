@@ -1,0 +1,7 @@
+<div *ngIf="!user">Please, log in to edit your wishlist.</div>
+<form [formGroup]="addForm" (ngSubmit)="addWish()">
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="title">
+    </div>
+</form>
+    </div></div>
