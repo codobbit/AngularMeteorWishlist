@@ -7,17 +7,16 @@ import { Wish } from '../../../../both/models/wish.model';
 
 import template from './wishlist-list.component.html';
 import {InjectUser} from "angular2-meteor-accounts-ui";
-import {zone, MeteorObservable} from "meteor-rxjs";
 
 @Component({
     selector: 'wishlist-list',
     template
 })
 @InjectUser('user')
-export class WishlistListComponent implements CanActivate, OnInit, OnDestroy{
+export class WishlistListComponent implements CanActivate, OnInit{
     wishlist: Observable<Wish[]>;
     user: Meteor.User;
-    wishlistSubscription: Subscription;
+    // wishlistSubscription: Subscription;
 
 
     constructor() {
@@ -26,8 +25,6 @@ export class WishlistListComponent implements CanActivate, OnInit, OnDestroy{
 
         }else {
             this.wishlist = Wishlist.find({});
-            console.log("No user");
-
         }
     }
     ngOnInit() {
@@ -41,9 +38,6 @@ export class WishlistListComponent implements CanActivate, OnInit, OnDestroy{
     canActivate() {
         const wish = Wishlist.findOne(this.wishId);
         return (wish && wish.owner == Meteor.userId());
-    }
-    ngOnDestroy() {
-        // this.wishlistSubscription.unsubscribe();
     }
 
 }

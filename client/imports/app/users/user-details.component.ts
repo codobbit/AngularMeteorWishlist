@@ -29,20 +29,17 @@ export class SelectedUserWishlistComponent implements CanActivate, OnDestroy{
     paramsSub: Subscription;
     user: User;
     userWishlist: Observable<Wish[]>;
+    selectedWish: Wish;
 
     constructor(private route: ActivatedRoute) {
         this.paramsSub = this.route.params.map(params => params['userId'])
             .subscribe(userId => {this.userId = userId;
                 this.user = Users.findOne(this.userId)});
 
-        console.log(this.userId + "this is at the top");
-
         if (Meteor.userId()) {
-            console.log(this.userId);
             this.userWishlist = Wishlist.find({"owner": this.userId}).zone();
         } else {
             this.userWishlist = Wishlist.find({});
-            console.log("No user");
         }
     }
 
@@ -55,13 +52,13 @@ export class SelectedUserWishlistComponent implements CanActivate, OnDestroy{
 
 
     isReserved = function (wish: Wish){
-        console.log(wish.reserved);
         if (!wish.reserved) return false;
         else return true;
     }
 
     reserveWish(wish: Wish){
-        Wishlist.update(wish.reserved, {
+        console.log(wish._id);
+        Wishlist.update(wish._id, {
             $set: {
                 reserved: true
             }
