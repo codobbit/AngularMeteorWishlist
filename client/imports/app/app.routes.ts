@@ -10,7 +10,7 @@ export const routes: Route[] = [
     { path: '', component: WishlistListComponent },
     { path: 'wish/:wishId', component: WishDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
     { path: 'users', component: UserlistComponent, canActivate: ['canActivateForLoggedIn']  },
-    { path: 'users/:userId', component: SelectedUserWishlistComponent, canActivate: ['canActivateForLoggedIn']  },
+    { path: 'users/:userId', component: SelectedUserWishlistComponent  },
 ];
 
 export const ROUTES_PROVIDERS = [{

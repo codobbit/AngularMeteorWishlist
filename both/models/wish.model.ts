@@ -4,4 +4,5 @@ export interface Wish extends CollectionObject{
     title: string;
     createdOn: Date;
     owner?: string;
+    reserved?: boolean;
 }

@@ -11,12 +11,14 @@
     <div class="col-md-12">
         <ul class="list-group">
             <li *ngFor="let wish of wishlist | async" class="list-group-item">
-                <a [routerLink]="['/wish', wish._id]">
                 <div class="row">
                     <div class="col-sm-10">
+                        <a [routerLink]="['/wish', wish._id]">
+
                         <h2>{{wish.title}}
                         </h2>
                         <p>{{wish.createdOn}}</p>
+                        </a>
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-danger btn-block pull-right" (click)="removeWish(wish)">
@@ -27,7 +29,6 @@
                         </button>
                     </div>
                 </div>
-                </a>
             </li>
         </ul>
     </div>

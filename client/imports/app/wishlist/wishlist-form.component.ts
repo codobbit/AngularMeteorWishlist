@@ -22,7 +22,7 @@ export class WishlistFormComponent implements OnInit {
     ngOnInit() {
         this.addForm = this.formBuilder.group({
             title: ['', Validators.required],
-            createdOn: new Date()
+            createdOn: new Date(),
         });
 
     }
@@ -33,7 +33,8 @@ export class WishlistFormComponent implements OnInit {
         }
 
         if (this.addForm.valid) {
-            Wishlist.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
+            Wishlist.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId(), reserved: false
+            }));
             this.addForm.reset();
         }
     }

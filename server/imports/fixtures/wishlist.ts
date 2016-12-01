@@ -10,7 +10,7 @@ export function loadWishlist() {
             title: 'The Picture of Dorian Grey by Oscar Wilde',
             createdOn: new Date(),
         }, {
-            title: 'Savage lounging',
+            title: 'Necronomicon by H.P. Lovecraft',
             createdOn: new Date(),
         }];
 
